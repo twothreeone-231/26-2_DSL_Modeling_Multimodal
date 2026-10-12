@@ -158,9 +158,9 @@ FILE_FAKE_PROB = max( r_voice(VP) x VF,  r_music(MP) x MF )
 오디오를 올리거나 바로 녹음하면 분석하고, 보이스피싱 정황 확인부터 신고용 정보
 정리까지 이어지는 FastAPI 웹 애플리케이션.
 
-<video src="https://github.com/twothreeone-231/26-2_DSL_Modeling_Multimodal/raw/main/docs/demo.mp4" controls width="100%"></video>
+[<img src="docs/demo_thumb.png" width="420" alt="웹 데모 시연 영상 — 클릭하면 재생">](docs/demo.mp4)
 
-> 영상이 재생되지 않으면 [docs/demo.mp4](docs/demo.mp4)에서 직접 확인할 수 있다.
+**▶ [시연 영상 보기 (1분)](docs/demo.mp4)** — 업로드부터 신고용 정보 정리까지 전 과정
 
 ### 흐름
 
