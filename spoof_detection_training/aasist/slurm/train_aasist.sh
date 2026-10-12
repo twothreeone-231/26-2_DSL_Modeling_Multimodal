@@ -6,9 +6,9 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=24:00:00
-#SBATCH --output=/mnt/data1/dsl07/deepvoice/yubeen/aasist/slurm/logs/%x_%j.out
-#SBATCH --error=/mnt/data1/dsl07/deepvoice/yubeen/aasist/slurm/logs/%x_%j.err
-#SBATCH --chdir=/mnt/data1/dsl07/deepvoice/yubeen/aasist
+#SBATCH --output=/mnt/cluster/workspace/deepvoice/yubeen/aasist/slurm/logs/%x_%j.out
+#SBATCH --error=/mnt/cluster/workspace/deepvoice/yubeen/aasist/slurm/logs/%x_%j.err
+#SBATCH --chdir=/mnt/cluster/workspace/deepvoice/yubeen/aasist
 
 # Train DeepVoiceAASIST (VF/MF/FF fake detection) on the v3 mixed dataset.
 # Mirrors yubeen/ast/slurm/train_ast.sh -- see that file's comment for why
@@ -23,12 +23,12 @@
 
 set -euo pipefail
 
-PYTHON=/mnt/data1/dsl07/envs/deepvoice/bin/python
-AASIST_DIR=/mnt/data1/dsl07/deepvoice/yubeen/aasist
+PYTHON=/mnt/cluster/workspace/envs/deepvoice/bin/python
+AASIST_DIR=/mnt/cluster/workspace/deepvoice/yubeen/aasist
 
 cd "$AASIST_DIR"
 
-export HF_HOME=/mnt/data1/dsl07/.cache/huggingface
+export HF_HOME=/mnt/cluster/workspace/.cache/huggingface
 export HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false
 # DataLoader workers each spawn threads; without this they oversubscribe the

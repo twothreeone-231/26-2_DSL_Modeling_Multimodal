@@ -22,7 +22,7 @@
 
 실행 방법 (tmux 세션 안에서):
     conda activate deepvoice
-    cd /data1/dsl07/deepvoice/yusung
+    cd /cluster/workspace/deepvoice/yusung
     python3 preprocess_data_v2.py
 """
 
@@ -59,8 +59,8 @@ warnings.filterwarnings("ignore", message="Possible clipped samples in output")
 # ============================================================
 
 # ===== 경로 =====
-RAW_ROOT = Path("/data1/dsl07/deepvoice/data/raw")
-OUT_ROOT = Path("/data1/dsl07/deepvoice/yusung/data_processed_v2")  # v1과 섞이지 않도록 별도 폴더
+RAW_ROOT = Path("/cluster/workspace/deepvoice/data/raw")
+OUT_ROOT = Path("/cluster/workspace/deepvoice/yusung/data_processed_v2")  # v1과 섞이지 않도록 별도 폴더
 AUDIO_OUT = OUT_ROOT / "audio"        # 표준화된 오디오 (16k/mono/loudness-normalized/10s chunk)
 META_OUT = OUT_ROOT / "metadata"      # 라벨 + split이 담긴 csv들
 AUDIO_OUT.mkdir(parents=True, exist_ok=True)

@@ -6,9 +6,9 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=24:00:00
-#SBATCH --output=/mnt/data1/dsl07/deepvoice/yubeen/ast/slurm/logs/%x_%j.out
-#SBATCH --error=/mnt/data1/dsl07/deepvoice/yubeen/ast/slurm/logs/%x_%j.err
-#SBATCH --chdir=/mnt/data1/dsl07/deepvoice/yubeen/ast
+#SBATCH --output=/mnt/cluster/workspace/deepvoice/yubeen/ast/slurm/logs/%x_%j.out
+#SBATCH --error=/mnt/cluster/workspace/deepvoice/yubeen/ast/slurm/logs/%x_%j.err
+#SBATCH --chdir=/mnt/cluster/workspace/deepvoice/yubeen/ast
 
 # Train DeepVoiceAST on the v3 mixed dataset.
 #
@@ -27,8 +27,8 @@
 
 set -euo pipefail
 
-PYTHON=/mnt/data1/dsl07/envs/deepvoice/bin/python
-AST_DIR=/mnt/data1/dsl07/deepvoice/yubeen/ast
+PYTHON=/mnt/cluster/workspace/envs/deepvoice/bin/python
+AST_DIR=/mnt/cluster/workspace/deepvoice/yubeen/ast
 
 cd "$AST_DIR"
 
@@ -37,7 +37,7 @@ cd "$AST_DIR"
 
 # Keep HF weights on the shared volume so every node reuses one download
 # instead of re-fetching into a home dir that may not be shared.
-export HF_HOME=/mnt/data1/dsl07/.cache/huggingface
+export HF_HOME=/mnt/cluster/workspace/.cache/huggingface
 # The AST checkpoint is already cached above; fail fast instead of hanging
 # if a compute node has no outbound internet access.
 export HF_HUB_OFFLINE=1

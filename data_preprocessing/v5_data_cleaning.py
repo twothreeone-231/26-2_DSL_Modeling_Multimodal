@@ -22,7 +22,7 @@ v5: data_mixed_v4를 기반으로, 라벨 있는 8개 그룹(noise_only 제외)�
 Usage:
   python build_mixed_dataset_v5.py
   또는 tmux에서:
-  tmux new-session -d -s mixed_v5 'cd /data1/dsl07/deepvoice && /data1/dsl07/envs/deepvoice/bin/python yusung/build_mixed_dataset_v5.py'
+  tmux new-session -d -s mixed_v5 'cd /cluster/workspace/deepvoice && /cluster/workspace/envs/deepvoice/bin/python yusung/build_mixed_dataset_v5.py'
 """
 import random
 import shutil
@@ -39,17 +39,17 @@ from augment_common_v3 import (
     TARGET_SR, fit_length, resample_if_needed, add_reverb, add_background, clip_normalize,
 )
 
-V4_MIXED = Path("/data1/dsl07/deepvoice/yusung/data_mixed_v4")
+V4_MIXED = Path("/cluster/workspace/deepvoice/yusung/data_mixed_v4")
 V4_AUDIO = V4_MIXED / "audio"
 V4_META = V4_MIXED / "metadata"
 
-V5_MIXED = Path("/data1/dsl07/deepvoice/yusung/data_mixed_v5")
+V5_MIXED = Path("/cluster/workspace/deepvoice/yusung/data_mixed_v5")
 V5_AUDIO = V5_MIXED / "audio"
 V5_META = V5_MIXED / "metadata"
 V5_AUDIO.mkdir(parents=True, exist_ok=True)
 V5_META.mkdir(parents=True, exist_ok=True)
 
-RAW_ROOT = Path("/data1/dsl07/deepvoice/data/raw")
+RAW_ROOT = Path("/cluster/workspace/deepvoice/data/raw")
 MUSAN_NOISE_DIR = RAW_ROOT / "musan" / "extracted" / "musan" / "noise"
 RIR_DIR = RAW_ROOT / "rirs_noises" / "extracted" / "RIRS_NOISES" / "simulated_rirs"
 

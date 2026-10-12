@@ -21,11 +21,11 @@ from pathlib import Path
 
 import pandas as pd
 
-V3_META = Path("/data1/dsl07/deepvoice/yusung/data_processed_v3/metadata")
-V4_META = Path("/data1/dsl07/deepvoice/yusung/data_processed_v4/metadata")
+V3_META = Path("/cluster/workspace/deepvoice/yusung/data_processed_v3/metadata")
+V4_META = Path("/cluster/workspace/deepvoice/yusung/data_processed_v4/metadata")
 V4_META.mkdir(parents=True, exist_ok=True)
 
-MUSAN_MUSIC_ROOT = Path("/data1/dsl07/deepvoice/data/raw/musan/extracted/musan/music")
+MUSAN_MUSIC_ROOT = Path("/cluster/workspace/deepvoice/data/raw/musan/extracted/musan/music")
 ANNOTATED_SUBDIRS = ["fma", "jamendo", "rfm", "fma-western-art", "hd-classical"]
 
 _STEM_RE = re.compile(r"__(music-[a-z-]+-\d+)_chunk")

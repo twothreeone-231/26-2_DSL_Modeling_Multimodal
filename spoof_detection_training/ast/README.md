@@ -82,7 +82,7 @@ slurm/submit_train.sh --limit 2000 --epochs 2
 
 ```bash
 # 제출된 job 확인
-squeue -u dsl07
+squeue -u $USER
 
 # 로그 실시간 보기
 tail -f slurm/logs/ast-train_*.out
@@ -127,7 +127,7 @@ cat checkpoints/job_JOBID/training_report.json | jq '.test'
 
 ## 🔗 데이터 경로
 
-- **혼합 데이터 (v5, 최신)**: `/data1/dsl07/deepvoice/yusung/data_mixed_v5/` (라벨 스키마는 v3와 동일 -- 자세한 버전 이력은 `yusung/DATASET_GUIDE_V1_TO_V5.md` 참고)
+- **혼합 데이터 (v5, 최신)**: `/cluster/workspace/deepvoice/yusung/data_mixed_v5/` (라벨 스키마는 v3와 동일 -- 자세한 버전 이력은 `yusung/DATASET_GUIDE_V1_TO_V5.md` 참고)
   - Audio: `audio/{train,val,test}/{mixed_id}.wav`
   - Metadata: `metadata/mixed_{train,val,test}.csv`
     (컬럼: `mixed_id, split, VP, MP, VF, MF, FF, voice_source, music_source, voice_dataset, music_dataset`)
@@ -159,7 +159,7 @@ python presence.py \
    - sbatch 요청 cpu-per-task를 너무 크게 하지 마세요.
    - num-workers를 cpu-per-task보다 작게 유지하세요.
 
-3. **캐시**: HF_HOME은 `/data1/dsl07/.cache/huggingface`입니다 (공유).
+3. **캐시**: HF_HOME은 `/cluster/workspace/.cache/huggingface`입니다 (공유).
 
 ---
 

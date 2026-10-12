@@ -6,7 +6,7 @@
 #     bash run_on_slurm.sh
 #
 # 노트북에서는 아래로 터널을 뚫고 http://localhost:18342 접속:
-#     ssh -N -L 18342:<계산노드IP>:18342 dsl07@<로그인노드>
+#     ssh -N -L 18342:<계산노드IP>:18342 <계정>@<로그인노드>
 #   (계산노드 IP는  getent hosts $(hostname) | awk '{print $1}'  로 확인)
 #
 # [왜 마이크가 localhost에서만 되는가] 브라우저는 보안상 HTTPS 또는 localhost
@@ -24,12 +24,12 @@ set -euo pipefail
 # 보지만, 이 스크립트가 실제로 실행되는 계산 노드(hpc-stat1 등)는 /data1/...가
 # 아예 존재하지 않고 같은 스토리지가 /mnt/data1/...로만 마운트되어 있다
 # (실측 확인됨: /data1로 두면 "경로 없음"으로 즉시 중단됨).
-PIPELINE_ROOT="${PIPELINE_ROOT:-/mnt/data1/dsl07/deepvoice/sewon/web_demo/pipeline_src}"
+PIPELINE_ROOT="${PIPELINE_ROOT:-/mnt/cluster/workspace/deepvoice/sewon/web_demo/pipeline_src}"
 
 # ── 2. 모델 가중치 경로 ────────────────────────────────────────────────────
 # src/config.py가 이 환경변수들로 경로를 받도록 이미 설계돼 있어서,
 # 코드와 가중치가 서로 다른 디렉터리에 있어도 수정 없이 연결된다.
-DV_BASE="/mnt/data1/dsl07/deepvoice"
+DV_BASE="/mnt/cluster/workspace/deepvoice"
 export JAEHYUN_CHECKPOINTS_DIR="${DV_BASE}/checkpoints"
 export JAEHYUN_HF_CACHE_DIR="${DV_BASE}/checkpoints/hf_cache"
 export JAEHYUN_DF_ARENA_DIR="${DV_BASE}/model/df_arena_1b"
@@ -72,7 +72,7 @@ echo "  모두 확인됨"
 NODE_IP="$(hostname -I | awk '{print $1}')"
 echo
 echo "계산 노드 IP: ${NODE_IP}"
-echo "노트북에서:  ssh -N -L ${PORT}:${NODE_IP}:${PORT} dsl07@<로그인노드>"
+echo "노트북에서:  ssh -N -L ${PORT}:${NODE_IP}:${PORT} <계정>@<로그인노드>"
 echo "그 다음:     http://localhost:${PORT}"
 echo
 

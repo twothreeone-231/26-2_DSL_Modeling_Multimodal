@@ -72,7 +72,7 @@ sbatch slurm/eval_aasist.sbatch --checkpoint checkpoints/job_JOBID/aasist_best.p
 
 ## 🔗 데이터 경로
 
-- **혼합 데이터 (v5, 최신)**: `/data1/dsl07/deepvoice/yusung/data_mixed_v5/`
+- **혼합 데이터 (v5, 최신)**: `/cluster/workspace/deepvoice/yusung/data_mixed_v5/`
   (yubeen/ast와 완전히 동일한 데이터셋 — presence/fake가 같은 클립을 보고 다른 라벨을 예측.
   버전 이력은 `yusung/DATASET_GUIDE_V1_TO_V5.md` 참고)
 

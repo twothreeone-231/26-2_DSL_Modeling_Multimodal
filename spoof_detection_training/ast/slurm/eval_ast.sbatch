@@ -11,16 +11,16 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=00:30:00
-#SBATCH --chdir=/mnt/data1/dsl07/deepvoice/yubeen/ast
-#SBATCH --output=/mnt/data1/dsl07/deepvoice/yubeen/ast/slurm/logs/%x_%j.out
-#SBATCH --error=/mnt/data1/dsl07/deepvoice/yubeen/ast/slurm/logs/%x_%j.err
+#SBATCH --chdir=/mnt/cluster/workspace/deepvoice/yubeen/ast
+#SBATCH --output=/mnt/cluster/workspace/deepvoice/yubeen/ast/slurm/logs/%x_%j.out
+#SBATCH --error=/mnt/cluster/workspace/deepvoice/yubeen/ast/slurm/logs/%x_%j.err
 
 set -euo pipefail
 
-PYTHON=/mnt/data1/dsl07/envs/deepvoice/bin/python
-AST_DIR=/mnt/data1/dsl07/deepvoice/yubeen/ast
+PYTHON=/mnt/cluster/workspace/envs/deepvoice/bin/python
+AST_DIR=/mnt/cluster/workspace/deepvoice/yubeen/ast
 
-export HF_HOME=/mnt/data1/dsl07/.cache/huggingface
+export HF_HOME=/mnt/cluster/workspace/.cache/huggingface
 export HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=1

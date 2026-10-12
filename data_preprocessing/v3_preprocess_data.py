@@ -8,7 +8,7 @@ v3 오디오 전처리 파이프라인
 Usage:
   python preprocess_data_v3.py
   또는 tmux에서:
-  tmux new-session -d -s preprocess_v3 'cd /data1/dsl07/deepvoice && python yusung/preprocess_data_v3.py'
+  tmux new-session -d -s preprocess_v3 'cd /cluster/workspace/deepvoice && python yusung/preprocess_data_v3.py'
 """
 
 import importlib
@@ -41,8 +41,8 @@ from tqdm import tqdm
 warnings.filterwarnings("ignore", message="Possible clipped samples in output")
 
 # ===== 경로 =====
-RAW_ROOT = Path("/data1/dsl07/deepvoice/data/raw")
-OUT_ROOT = Path("/data1/dsl07/deepvoice/yusung/data_processed_v3")
+RAW_ROOT = Path("/cluster/workspace/deepvoice/data/raw")
+OUT_ROOT = Path("/cluster/workspace/deepvoice/yusung/data_processed_v3")
 AUDIO_OUT = OUT_ROOT / "audio"
 META_OUT = OUT_ROOT / "metadata"
 AUDIO_OUT.mkdir(parents=True, exist_ok=True)
