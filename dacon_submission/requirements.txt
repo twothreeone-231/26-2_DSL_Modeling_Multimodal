@@ -1,0 +1,17 @@
+# Only packages NOT already in the DACON eval image (torch==2.7.1+cu128,
+# torchaudio, numpy==1.26.4, pandas==2.0.3, librosa, soundfile, huggingface-hub,
+# safetensors, einops, torchlibrosa, etc. are pre-installed -- do not repin them
+# here, per the competition guide's own recommendation, to avoid the eval
+# server's pip touching an already-working torch/CUDA install).
+onnxruntime-gpu==1.20.0
+timm==1.0.29
+torchvision==0.22.1
+# soundfile/libsndfile (and torchaudio, which has no ffmpeg backend in this
+# env) cannot decode m4a/aac/opus/wma -- 4 of the 8 extensions this pipeline
+# claims to support (src/audio_io.SUPPORTED_AUDIO_EXTENSIONS). `av` ships its
+# own statically linked FFmpeg libs (no system ffmpeg binary needed, works
+# offline) and is used as load_audio()'s third fallback decoder after
+# soundfile and torchaudio both fail. Verified via real encode->decode round
+# trips for m4a/aac/opus during implementation (see README's kHz/format
+# compatibility review section).
+av==18.1.0

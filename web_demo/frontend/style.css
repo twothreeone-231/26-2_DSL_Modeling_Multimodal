@@ -1,0 +1,294 @@
+/*
+  [목적] 웹앱 전체 스타일.
+
+  [밝은 배경을 고른 이유] 발표장 빔프로젝터는 어두운 배경에서 대비가 무너지는
+  경우가 많다. 흰 배경 + 진한 글자가 가장 안전하다.
+
+  [외부 폰트를 쓰지 않은 이유] 웹폰트는 인터넷이 있어야 로드된다. 시스템에
+  기본 설치된 한글 폰트(애플 SD 고딕, 맑은 고딕)를 우선 지정해 오프라인에서도
+  동일하게 보이게 했다.
+*/
+
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1a1d21;
+  --muted: #6b7280;
+  --line: #e3e6ea;
+  --primary: #2563eb;
+  --danger: #dc2626;
+  --warn: #d97706;
+  --safe: #059669;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 16px 64px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 0 16px;
+}
+header h1 { margin: 0; font-size: 26px; letter-spacing: -0.5px; }
+header .sub { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+main { max-width: 760px; margin: 0 auto; }
+
+footer {
+  max-width: 760px;
+  margin: 32px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── 단계 표시 ─────────────────────────────── */
+.progress {
+  max-width: 760px;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.progress span {
+  flex: 1;
+  min-width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+}
+.progress span.done { background: var(--primary); }
+
+/* ── 단계 전환 ─────────────────────────────── */
+/* [핵심] 모든 단계를 HTML에 써두고 .active 가 붙은 것만 보여준다. */
+.step { display: none; }
+.step.active { display: block; }
+
+/* ── 카드 ─────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.card h2 { margin: 0 0 4px; font-size: 19px; }
+.card h3 { margin: 0 0 10px; font-size: 16px; }
+.card.urgent { border-color: #fecaca; background: #fef2f2; }
+.card.urgent strong { color: var(--danger); }
+.card.urgent p { margin: 4px 0 12px; font-size: 14px; }
+
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.notice {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  background: #f0f9ff;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #0c4a6e;
+}
+.disclaimer {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border-left: 3px solid var(--warn);
+  font-size: 13px;
+  color: #78350f;
+}
+
+/* ── 버튼 ─────────────────────────────────── */
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.btn:hover { background: #f3f4f6; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn-danger:hover { background: #b91c1c; }
+.btn.big { padding: 22px 18px; font-size: 15px; line-height: 1.5; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+/* ── 입력 영역 ─────────────────────────────── */
+.input-grid, .choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.input-box {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 20px 14px;
+  text-align: center;
+}
+.input-box .icon { font-size: 28px; }
+.input-box h3 { margin: 6px 0 2px; font-size: 15px; }
+.input-box p { margin: 0 0 12px; }
+.filename { margin: 10px 0 0; font-size: 13px; color: var(--primary); word-break: break-all; }
+
+/* ── 분석 상태 ─────────────────────────────── */
+.analysis-status { display: flex; align-items: center; gap: 14px; }
+.analysis-status strong { display: block; }
+.analysis-status p { margin: 2px 0 0; }
+.spinner {
+  width: 26px; height: 26px; flex-shrink: 0;
+  border: 3px solid var(--line);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner.done {
+  animation: none;
+  border: 3px solid var(--safe);
+  border-radius: 50%;
+}
+
+/* ── 체크리스트 ────────────────────────────── */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+.check-item:hover { background: #f9fafb; }
+.check-item input { margin-top: 3px; width: 17px; height: 17px; flex-shrink: 0; cursor: pointer; }
+.check-item.checked { border-color: var(--danger); background: #fef2f2; }
+.check-item .label { font-size: 14.5px; }
+.check-item .tag {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--danger);
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* ── 결과 ─────────────────────────────────── */
+.verdict {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 16px 0 6px;
+}
+.verdict.critical { color: var(--danger); }
+.verdict.high { color: var(--danger); }
+.verdict.warn { color: var(--warn); }
+.verdict.low { color: var(--safe); }
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--line);
+  color: var(--muted);
+  vertical-align: middle;
+}
+.badge-primary { background: #dbeafe; color: #1e40af; }
+
+/* 확률 막대 */
+.bar-row { margin-bottom: 14px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
+.bar-label .val { font-variant-numeric: tabular-nums; font-weight: 600; }
+.bar {
+  height: 9px;
+  background: var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar > div { height: 100%; border-radius: 5px; transition: width 0.4s; }
+.bar .fill-high { background: var(--danger); }
+.bar .fill-mid { background: var(--warn); }
+.bar .fill-low { background: var(--safe); }
+.bar-note { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+
+.hit-list { margin: 0; padding-left: 18px; font-size: 14px; }
+.hit-list li { margin-bottom: 3px; }
+
+/* 처리 단계별 소요 시간 */
+.stages {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.stages-title { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+.stage {
+  display: grid;
+  grid-template-columns: 1fr 90px 48px;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.stage-name { color: var(--text); }
+.stage-bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.stage-bar i { display: block; height: 100%; background: var(--primary); border-radius: 3px; }
+.stage-sec { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+
+@media (max-width: 560px) {
+  .stage { grid-template-columns: 1fr 56px 44px; }
+}
+
+/* ── 신고 안내 ─────────────────────────────── */
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.contact .who { font-weight: 600; }
+.contact .desc { font-size: 13px; color: var(--muted); }
+.contact .num { font-size: 20px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.step-list { padding-left: 20px; font-size: 14.5px; }
+.step-list li { margin-bottom: 7px; }
+
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  resize: vertical;
+  background: #fbfbfc;
+  color: var(--text);
+}
+
+/* ── 좁은 화면 ─────────────────────────────── */
+@media (max-width: 560px) {
+  .input-grid, .choice-grid { grid-template-columns: 1fr; }
+  header { padding-top: 22px; }
+  .verdict { font-size: 20px; }
+}

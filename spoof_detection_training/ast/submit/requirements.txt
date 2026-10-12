@@ -1,0 +1,5 @@
+# All packages this script needs (torch, torchaudio, transformers,
+# librosa, soundfile, pandas, numpy) are already preinstalled on the
+# evaluation server. Keep this file empty unless script.py starts
+# depending on something outside that preinstalled list, to avoid
+# version-conflict install errors.

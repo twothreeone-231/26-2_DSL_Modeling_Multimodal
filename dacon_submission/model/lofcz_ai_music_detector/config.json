@@ -1,0 +1,19 @@
+{
+  "model_type": "logistic_regression",
+  "task": "audio-classification",
+  "labels": [
+    "real",
+    "ai_generated"
+  ],
+  "preprocessing": {
+    "sample_rate": 16000,
+    "n_fft": 8192,
+    "freq_min": 1000,
+    "freq_max": 8000,
+    "hull_area": 10,
+    "max_db": 5,
+    "min_db": -45
+  },
+  "input_features": 3585,
+  "threshold": 0.5
+}

@@ -1,0 +1,8 @@
+# 웹 백엔드 전용 의존성.
+# 모델 관련 패키지(torch, onnxruntime, av 등)는 여기 넣지 않는다 --
+# 프론트엔드 개발 단계에서는 모델이 필요 없고, 모델 환경은 SLURM 계산 노드의
+# 기존 설치를 그대로 쓸 것이기 때문. (실제 모델 연결 단계에서 별도 정리)
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20   # FastAPI가 파일 업로드(multipart/form-data)를 파싱하는 데 필요
